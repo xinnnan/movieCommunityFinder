@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <!-- Local CSS -->
+    <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+    <title>Movie Communty Finder</title>
+</head>
+
+<body>
+    <header class="container-fluid text-center text-white bg-primary p-2">
+        <h1>Movie Communty Finder</h1>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Search/History -->
+            <div class="col-lg-3 bg-light">
+                <h5 class="mt-1">Search for a Movie:</h5>
+                <!-- Search -->
+                <div class="input-group mb-3">
+                    <!-- Searchbar -->
+                    <input id="search-movie" type="text" class="form-control" placeholder="Movie Name"
+                        aria-label="Enter a movie name">
+                    <div class="input-group-append">
+                        <!-- Search button with icon -->
+                        <button class="btn btn-primary" type="button" id="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- History -->
+                <!-- Clear history button -->
+                <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+                <!-- Form to hold searched movies -->
+                <form id="history"></form>
+            </div>
+
+            <!-- Display results -->
+            <div class="col-lg-9">
+                <!-- Movie Results -->
+                <div class="row" id="movie-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- Day.js -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <!-- Local JS-->
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
