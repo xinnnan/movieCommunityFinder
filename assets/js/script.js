@@ -81,3 +81,12 @@ tosearchList.addEventListener("click", function(event) {
 
 // Calls init to retrieve data and render it to the page on load
 init()
+
+// Beggining of js for imbeded table
+$('[data-open-details]').click(function (e) {
+  e.preventDefault();
+  $(this).next().toggleClass('is-active');
+  $(this).toggleClass('is-active');
+});
+   
+// End of js for imbeded table
