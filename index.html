@@ -29,20 +29,27 @@
           <!-- Table area, takes (8/12) on large screen, (12/12) on any smaller -->
           <div class="large-8 columns">
             
+            <!-- Switch for toggling favourites -->
+            <div class="switch small">
+              <button type="button" class="secondary large button" data-fav-toggle>Click to toggle favourites</button>
+            </div>
+            
+            <!-- Table head -->
             <table class="table-expand">
               <thead>
                 <tr class="table-expand-row-">
-                  <th width="200">Movie Title</th>
-                  <th>Option 2</th>
-                  <th class="text-right" width="150">Option 3</th>
+                  <th width="100">Favourited</th>
+                  <th>Movie Title</th>
+                  <th class="text-left" width="150">Option 3</th>
                   <th width="150">Option 4</th>
                 </tr>
               </thead>
 
+              <!-- Table body -->
               <tbody>
                 <tr class="table-expand-row" data-open-details>
-                  <td>Movie 1</td>
-                  <td></td>
+                  <td class="text-center"></td>
+                  <td>MOVIE 1</td>
                   <td class="text-right"></td>
                   <td><span class="expand-icon"></span></td>
                 </tr>
@@ -50,12 +57,13 @@
                 <tr class="table-expand-row-content">
                   <td colspan="8" class="table-expand-row-nested">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque unde quaerat reprehenderit ipsa ipsam, adipisci facere repellendus impedit at, quisquam dicta optio veniam quia nesciunt, inventore quod in neque magni?</p>
+                    <input type="submit" class="button float-right" value="Favourite" data-fav-button>
                   </td>
                 </tr>
             
                 <tr class="table-expand-row" data-open-details>
-                  <td>Movie 2</td>
-                  <td></td>
+                  <td class="text-center"></td>
+                  <td>MOVIE 2</td>
                   <td class="text-right"></td>
                   <td><span class="expand-icon"></span></td>
                 </tr>
@@ -63,6 +71,7 @@
                 <tr class="table-expand-row-content">
                   <td colspan="8" class="table-expand-row-nested">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque unde quaerat reprehenderit ipsa ipsam, adipisci facere repellendus impedit at, quisquam dicta optio veniam quia nesciunt, inventore quod in neque magni?</p>
+                    <input type="submit" class="button float-right" value="Favourite" data-fav-button>
                   </td>
                   </td>
                 </tr>
@@ -71,7 +80,40 @@
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> 
-        <script src="./assets/js/script.js"></script>
+        <script>
+
+var tableMovieNum = 2; //A variable to keep track of how many movies in table, currently hard coded for testing
+          
+//JS Start -- Table expand event function
+$('[data-open-details]').click(function (e) {
+  e.preventDefault();
+  $(this).next().toggleClass('is-active');
+  $(this).toggleClass('is-active');
+});
+//JS End -- Table expand event function
+
+//JS Start -- Favourite change event function
+$('[data-fav-button').click(function (e) {
+  e.preventDefault();
+  $(this).parent().parent().prev().toggleClass("favourited");
+  $(this).parent().parent().toggleClass("favourited");
+  if ($(this).parent().parent().prev().children('.text-center').text() === "⭐") {
+    $(this).parent().parent().prev().children('.text-center').text("");
+  } else {
+    $(this).parent().parent().prev().children('.text-center').text("⭐");
+  }
+});
+//JS End -- Favourite change event function
+
+//JS Start -- Favourite Toggle
+$('[data-fav-toggle]').click(function (e) {
+  e.preventDefault();
+  $(this).toggleClass("secondary");
+  $(this).toggleClass("warning");
+  $('.favourited').toggleClass("hide")
+})
+//JS End -- Favourite Toggle
+        </script>
       </body>
 
 </html>
