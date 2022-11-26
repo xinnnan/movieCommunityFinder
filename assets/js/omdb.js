@@ -178,5 +178,5 @@ function genMovieReddit(data) {
   );
 }
 
-// Load history items
+// Loads history items
 genSeachHistory();
