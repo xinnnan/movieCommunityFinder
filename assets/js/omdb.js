@@ -27,6 +27,7 @@ function addMovies(query) {
       return response.json();
     })
     .then(function (data) {
+      console.log(data);
       // For first page
       // Add the movie poster to the movie results container
       const moviePosterEl = $("<img>").addClass("col-lg-2 m-1");
@@ -106,7 +107,7 @@ function loadPosters() {
 // For second page
 function genMovieReddit(data) {
   // Add the movie poster to the movie results container
-  const moviePosterEl = $("<img>").addClass("col-lg-2 m-1");
+  const moviePosterEl = $("<img>").addClass("m-1");
 
   moviePosterEl.attr("src", data.Poster);
 
@@ -138,6 +139,40 @@ function genMovieReddit(data) {
 
   movieGenreEl.html(`Genre: ${data.Genre}`);
 
+  // Make an area of the movie-item for holding the reviews
+  const imdbReviewEl = $("<p>").addClass("imdb-review");
+  const rottenTomatoesReviewEl = $("<p>").addClass("rotten-tomatoes-review");
+  const metaCriticReviewEl = $("<p>").addClass("meta-critic-review");
+
+  imdbReviewEl.html(`IMDB Review: ${data.Ratings[0]}`);
+  rottenTomatoesReviewEl.html(`Rotten Tomatoes Review: ${data.Ratings[1]}`);
+  metaCriticReviewEl.html(`Metacritic Review: ${data.Ratings[2]}`);
+
+  // Make an area of the movie-item for holding the plot
+  const moviePlotEl = $("<p>").addClass("plot");
+
+  moviePlotEl.html(`Plot: ${data.Plot}`);
+
+  // Make an area of the movie-item for holding the director
+  const movieDirectorEl = $("<p>").addClass("director");
+
+  movieDirectorEl.html(`Director: ${data.Director}`);
+
+  // Make an area of the movie-item for holding the actors
+  const movieActorsEl = $("<p>").addClass("actors");
+
+  movieActorsEl.html(`Actors: ${data.Actors}`);
+
+  // Make an area of the movie-item for holding the awards
+  const movieAwardsEl = $("<p>").addClass("awards");
+
+  movieAwardsEl.html(`Awards: ${data.Awards}`);
+
+  // Make an area of the movie-item for holding the box office earnings
+  const movieBoxOfficeEl = $("<p>").addClass("box-office");
+
+  movieBoxOfficeEl.html(`Box Office: ${data.BoxOffice}`);
+
   // Generate HTML container elements
   // Container for each movie
   const movieDetailsContainerEl = $("<div>").attr(
@@ -157,10 +192,10 @@ function genMovieReddit(data) {
   movieRedditEl.addClass(
     "col-2 m-1 p-1 bg-primary border border-white text-white"
   );
-  
+
   // For demo purpose/placeholder
   movieRedditEl.text("Reddit");
-  
+
   // Reddit/Details page append container to hold
   // poster/movie info/reddit info
   movieDetailsContainerEl.append(moviePosterEl, movieDetailsEl, movieRedditEl);
@@ -174,7 +209,13 @@ function genMovieReddit(data) {
     movieYearEl,
     movieCountryEl,
     movieRatingEl,
-    movieGenreEl
+    movieGenreEl,
+    movieRatingEl,
+    moviePlotEl,
+    movieDirectorEl,
+    movieActorsEl,
+    movieAwardsEl,
+    movieBoxOfficeEl
   );
 }
 
