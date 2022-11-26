@@ -1,0 +1,119 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Movie Community Finder</title>
+        <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+        <link rel="stylesheet" href="./assets/css/style.css">
+      </head>
+
+      <body>
+
+        <!-- Header (Can change to a different element later if buttons, tabs, etc. would like to be added) -->
+        <div class="callout secondary">
+          <div>
+            <h1 class="text-left">Welcome to the Movie Community Finder!</h1>
+            <p class="lead">This website will help you find communities on Reddit that are similar to your movie interests. Start by adding movies you are intereested into the list. After you've added your movies, click on them in the table to reveal the generated Reddit communities!</p>
+          </div>
+        </div>
+
+        <!-- Main content area -->
+        <div>
+          
+          <!-- User input are -->
+          <div class="large-4 columns">
+
+          </div>
+
+          <!-- Table area, takes (8/12) on large screen, (12/12) on any smaller -->
+          <div class="large-8 columns">
+            
+            <!-- Switch for toggling favourites -->
+            <div class="switch small">
+              <button type="button" class="secondary large button" data-fav-toggle>Click to toggle favourites</button>
+            </div>
+            
+            <!-- Table head -->
+            <table class="table-expand">
+              <thead>
+                <tr class="table-expand-row-">
+                  <th width="100">Favourited</th>
+                  <th>Movie Title</th>
+                  <th class="text-left" width="150">Option 3</th>
+                  <th width="150">Option 4</th>
+                </tr>
+              </thead>
+
+              <!-- Table body -->
+              <tbody>
+                <tr class="table-expand-row" data-open-details>
+                  <td class="text-center"></td>
+                  <td>MOVIE 1</td>
+                  <td class="text-right"></td>
+                  <td><span class="expand-icon"></span></td>
+                </tr>
+            
+                <tr class="table-expand-row-content">
+                  <td colspan="8" class="table-expand-row-nested">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque unde quaerat reprehenderit ipsa ipsam, adipisci facere repellendus impedit at, quisquam dicta optio veniam quia nesciunt, inventore quod in neque magni?</p>
+                    <input type="submit" class="button float-right" value="Favourite" data-fav-button>
+                  </td>
+                </tr>
+            
+                <tr class="table-expand-row" data-open-details>
+                  <td class="text-center"></td>
+                  <td>MOVIE 2</td>
+                  <td class="text-right"></td>
+                  <td><span class="expand-icon"></span></td>
+                </tr>
+            
+                <tr class="table-expand-row-content">
+                  <td colspan="8" class="table-expand-row-nested">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque unde quaerat reprehenderit ipsa ipsam, adipisci facere repellendus impedit at, quisquam dicta optio veniam quia nesciunt, inventore quod in neque magni?</p>
+                    <input type="submit" class="button float-right" value="Favourite" data-fav-button>
+                  </td>
+                  </td>
+                </tr>
+
+          </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> 
+        <script>
+
+var tableMovieNum = 2; //A variable to keep track of how many movies in table, currently hard coded for testing
+          
+//JS Start -- Table expand event function
+$('[data-open-details]').click(function (e) {
+  e.preventDefault();
+  $(this).next().toggleClass('is-active');
+  $(this).toggleClass('is-active');
+});
+//JS End -- Table expand event function
+
+//JS Start -- Favourite change event function
+$('[data-fav-button').click(function (e) {
+  e.preventDefault();
+  $(this).parent().parent().prev().toggleClass("favourited");
+  $(this).parent().parent().toggleClass("favourited");
+  if ($(this).parent().parent().prev().children('.text-center').text() === "⭐") {
+    $(this).parent().parent().prev().children('.text-center').text("");
+  } else {
+    $(this).parent().parent().prev().children('.text-center').text("⭐");
+  }
+});
+//JS End -- Favourite change event function
+
+//JS Start -- Favourite Toggle
+$('[data-fav-toggle]').click(function (e) {
+  e.preventDefault();
+  $(this).toggleClass("secondary");
+  $(this).toggleClass("warning");
+  $('.favourited').toggleClass("hide")
+})
+//JS End -- Favourite Toggle
+        </script>
+      </body>
+
+</html>
