@@ -13,12 +13,12 @@
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <!-- Local CSS -->
     <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
-    <title>Movie Communty Finder</title>
+    <title>Movie Community Finder</title>
 </head>
 
 <body>
     <header class="container-fluid text-center text-white bg-primary p-2">
-        <h1>Movie Communty Finder</h1>
+        <h1>Movie Community Finder</h1>
     </header>
 
     <!-- Main Content Container -->
@@ -42,6 +42,8 @@
                 <!-- History -->
                 <!-- Clear history button -->
                 <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+                <!-- Link to Reddit/Movie details button -->
+                <button class="btn btn-primary mb-3" onclick="window.location.href = './index_omdb_2.html';" type="button" id="reddit-details">Reddit/Details</button>
                 <!-- Form to hold searched movies -->
                 <form id="history"></form>
             </div>
@@ -60,7 +62,7 @@
     <!-- Day.js -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <!-- Local JS-->
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/omdb.js"></script>
 </body>
 
 </html>
