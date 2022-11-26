@@ -27,7 +27,6 @@ function addMovies(query) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       // For first page
       // Add the movie poster to the movie results container
       const moviePosterEl = $("<img>").addClass("col-lg-2 m-1");
