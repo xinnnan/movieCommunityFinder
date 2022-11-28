@@ -61,9 +61,8 @@ $(function() {
 
               var imageUrl = data.Poster;
               $('body').css("background", "url(" + imageUrl + ")");
-              $('body').css("linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)");
   
-            // background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),url("h);
+            
           var movieTitle = $("<div>").addClass("card-section");
           movieTitle.html(`<h4>${data.Title}</h4>`);
           moviePosterEl.append($("<img>").attr("src", data.Poster), movieTitle);
@@ -525,13 +524,14 @@ $(function() {
     function handleSearchFormSubmit() {
       
       var searchName = JSON.parse(localStorage.getItem("movie"));
-      console.log(searchName);
+ 
       if (!searchName) {
         console.error("You need a search input value!");
         return;
       }
       searchSubApi(searchName);
       searchRedditApi(searchName); 
+      addMovies(searchName); 
     }
   
     // Update available search menu filters
@@ -563,6 +563,8 @@ $(function() {
     $(".post-input").on("change", updatePostMenu);
     $(".slider").on("click", handleSearchFormSubmit);
     $(".slider").on("click", handleSearchFormSubmit);
+    $("#search-form").on("submit", function(){
+      localStorage.setItem("movie", JSON.stringify($("#search-input").val().trim()))});
   
   // Loads history items
   genSeachHistory();
