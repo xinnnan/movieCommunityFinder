@@ -1,72 +1,179 @@
-/* Beggining of stylesheet for inbeded table */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-.table-expand {
-    margin-top: 5rem;
-    width: 100%;
-  }
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--light);
+}
   
-  .table-expand td {
-    color: #8a8a8a;
-  }
-  
-  .table-expand tr {
-    border: 1px solid #e6e6e6;
-  }
-  
-  .table-expand .text-right {
-    padding-right: 3rem;
-  }
-  
-  .table-expand-row.is-active .expand-icon::after {
-    content: '-';
-  }
-  
-  .table-expand-row .expand-icon::after {
-    content: '+';
-    float: right;
-  }
-  
-  .table-expand-row-content {
-    display: none;
-  }
-  
-  .table-expand-row-content.is-active {
-    display: table-row;
-    -webkit-animation: fadeIn ease-in 1;
-            animation: fadeIn ease-in 1;
-    -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-    -webkit-animation-duration: 0.3s;
-            animation-duration: 0.3s;
-  }
-  
-  .table-expand-row-nested {
-    background-color: #e6e6e6;
-  }
-  
-  .table-expand-row:hover {
-    background-color: rgb(148, 196, 196);
-  }
-  
-  @-webkit-keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-   /* End of stylesheet for imbeded table */
-  
-   body {
-    background: #8a8a8a;
-   }
+
+::-webkit-scrollbar-thumb {
+    background: var(--yellow);
+}
+
+:root{
+    --light: #f8f8f8;
+    --grey: #e6e6e6;
+    --darkgrey: #555555;
+    --yellow: #f5c518;
+}
+
+
+body {
+    background: rgba(0,0,0,0.6);
+    background-size: auto 100vh;
+    background-position: center;
+    background-color: black;
+    background-attachment: fixed;
+    font-family: 'Lato', sans-serif;
+}
+
+
+h5 {
+    color: #444444;
+}
+
+ul.dropdown.menu {
+    margin-bottom: 10px;
+}
+
+.result-container {
+    width: 60vw;
+    padding: 2%;
+    margin-left: auto;   
+}
+
+.accordion-title {
+    color: var(--darkgrey);
+}
+
+.slider-fill, 
+.slider-handle {
+    background: var(--yellow);
+}
+
+.slider-handle:hover {
+    background: #fff; 
+}
+
+.slider-handle:active {
+    background: #fff; 
+    box-shadow: 0 0 10px #fff, 0 0 20px var(--yellow);
+}
+
+.comment-wrapper {
+    text-align: left;
+    margin: 5%;
+    margin:5% 0 5% 0;
+    color: #3d3d3d;
+    border-bottom: lightgrey solid 1px;
+}
+
+#content-container{
+    max-height: 60vh;
+    overflow: scroll;
+}
+
+#post-sort,
+#post-time {
+    color: var(--darkgrey);
+    font-size: 80%;
+}
+
+#search-result {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #fff, 0 0 10px var(--yellow);
+}
+
+#omdb-container-label,
+#reddit-container-label,
+#panel-sub-label,
+#panel-post-label {
+    color: var(--darkgrey);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+#subBtn {
+    margin-top: 10%;
+    text-align: center;
+}
+
+#subBtn > .button:hover,
+#panel-sub-label[aria-selected="true"],
+#panel-post-label[aria-selected="true"] {
+    background-color: var(--yellow);
+    color: var(--darkgrey);
+}
+
+#item-container-label:hover,
+#item-container-label:focus,
+#omdb-container-label[aria-expanded="true"],
+#reddit-container-label[aria-expanded="true"] {
+    border-left-color:  var(--yellow);
+    border-left-width: 6px;
+}
+
+#sub-icon {
+    max-width: 3em;
+    border-radius: 10%;
+    margin: 1%;
+}
+
+#sub-name {
+    border-bottom: var(--yellow) solid 2px;
+    margin-right: 5%;
+}
+
+#date{
+    margin-right: 5%;
+}
+
+
+#icon-section {
+    background-size: 100%;
+    background-color: var(--grey);
+    margin-bottom: 10px;
+}
+
+#search-title {
+    color: var(--yellow); 
+    text-align: left;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 5px;
+    font-size: 100%;
+    margin-bottom: 3%;
+}
+
+#result-text {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 120%;
+    text-shadow: 0 0 5px #fff, 0 0 10px var(--yellow);
+} 
+
+#comment-wrapper{
+    color: var(--darkgrey);
+    font-size: 70%;
+    list-style-type: none;
+}
+
+#post-text {
+    color: #444444;
+    font-size: 90%;
+}
+
+#comment-wrapper #comment {
+    color: #444444;
+    font-size: 15px;
+    margin-bottom: 3%;
+    border-bottom: solid var(--grey) 1px;
+}
