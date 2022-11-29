@@ -56,7 +56,7 @@ $(function() {
           // Add the movie poster to the movie results container
           var moviePosterEl = $("<a>").addClass("thumbnail small-12 row").attr({
             "id":"poster-link",
-             "href":"\temp folder\detail.html",
+             "href":"detail.html",
             "data-title":data.Title});
 
               var imageUrl = data.Poster;
@@ -164,7 +164,7 @@ $(function() {
     // Add the movie poster to the movie results container
     // Make the posters clickable
     var moviePosterEl = $("<a>").addClass("thumbnail medium-1").attr({
-      "href":"\temp folder\detail.html",
+      "href":"detail.html",
       "data-title":data.Title});
     moviePosterEl.append($("<img>").attr("src", data.Poster));
     $("#movie-results").append(moviePosterEl);
