@@ -276,6 +276,7 @@ $(function() {
       movieAwardsEl,
       movieBoxOfficeEl
     );
+    localStorage.setItem("movie", JSON.stringify(data.Title));
     $("#omdb-content").append(movieDetailsEl);
   }
   
