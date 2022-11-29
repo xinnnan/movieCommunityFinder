@@ -34,13 +34,19 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
-h1 {
+a h1 {
   font-size: 17px;
   font-family: 'Orbitron', sans-serif;
+  color: var(--yellow)
 }
 
-h5 {
-    color: #444444;
+h3 {
+  color: var(--light);
+}
+
+h4 {
+  color: #444444;
+  font-size: 15px;
 }
 
 ul.dropdown.menu {
@@ -51,6 +57,7 @@ ul.dropdown.menu {
   min-height:25px;
   background: black;
   color: var(--yellow);
+  text-align: center; 
 }
 
 .result-container {
@@ -123,6 +130,10 @@ ul.dropdown.menu {
 
 .table-expand-row:hover {
   background-color: rgb(148, 196, 196);
+}
+
+#movie-results > a {
+  margin: 10px;
 }
 
 #content-container,

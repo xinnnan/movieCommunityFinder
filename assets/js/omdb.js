@@ -49,7 +49,7 @@ $(function() {
         } else {
           // For first page
           // Add the movie poster to the movie results container
-          var moviePosterEl = $("<a>").addClass("thumbnail small-12 small-centered medium-5 large-2 column").attr({
+          var moviePosterEl = $("<a>").addClass("thumbnail centered small-12 medium-5 large-2 row").attr({
             "id":"poster-link",
              "href":"\detail.html",
             "data-title":data.Title});
@@ -313,7 +313,7 @@ $(function() {
           icon.attr(
               "src", iconPlaceholder);
       }
-      var title = $("<h5>").attr("id","title-text").text(subObj.title);
+      var title = $("<h4>").attr("id","title-text").text(subObj.title);
       var sub = $("<span>").attr("id","sub-name").text(subObj.display_name_prefixed);
       var subscriber = $("<h>").attr("id","subscriber");
       if (subObj.subscribers) {
