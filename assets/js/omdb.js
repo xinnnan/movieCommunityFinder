@@ -28,7 +28,7 @@ const resultEl = $("#movie-results");
 var searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
 
 // Base tosearchs URL and API key
-const baseURL = "http://www.omdbapi.com/?";
+const baseURL = "https://www.omdbapi.com/?";
 const apikey = "&apikey=d812fbca";
 
 $(function() {
