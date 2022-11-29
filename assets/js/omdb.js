@@ -1,5 +1,5 @@
 // Search/History Elements
-const searchMovieEl = $("#search-movie");
+const searchMovieEl = $("#tosearch-text");
 const searchBtnEl = $("#search-button");
 const clearBtnEl = $("#clear-history");
 const historyEl = $("#history");
@@ -25,9 +25,9 @@ const resultEl = $("#movie-results");
 
 // Get search history from localStorage
 // or empty array if localStorage is empty
-var searchHistory = JSON.parse(localStorage.getItem("query")) || [];
+var searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
 
-// Base query URL and API key
+// Base tosearchs URL and API key
 const baseURL = "http://www.omdbapi.com/?";
 const apikey = "&apikey=d812fbca";
 
@@ -35,11 +35,11 @@ $(function() {
 
   $(document).foundation();
 
-  function addMovies(query) {
-    // Generate query URL for current movie
-    const queryURL = `${baseURL}t=${query}${apikey}`;
+  function addMovies(tosearchs) {
+    // Generate tosearchs URL for current movie
+    const tosearchsURL = `${baseURL}t=${tosearchs}${apikey}`;
   
-    fetch(queryURL)
+    fetch(tosearchsURL)
       .then(function (response) {
         if (!response.ok) {
           throw response.json();
@@ -78,17 +78,17 @@ $(function() {
       });
   }
   
-  searchBtnEl.on("click", function () {
+  $("#tosearch-form").on("submit", function () {
     // Get movie title currently in searchbar
     // Format the title of the movie to replace white space '\s' with '+'
-    const query = searchMovieEl.val().trim().toLowerCase();
-    updateSearchHistory(query);
+    const tosearchs = searchMovieEl.val().trim().toLowerCase();
+    updateSearchHistory(tosearchs);
   
     // Add movie value to searchHistory array
-    // searchHistory.push(query);
+    // searchHistory.push(tosearchs);
   
     // Add array to localStorage
-    // localStorage.setItem("query", JSON.stringify(searchHistory));
+    // localStorage.setItem("tosearchs", JSON.stringify(searchHistory));
   
     // Generate search history in HTML
     genSeachHistory();
@@ -129,22 +129,22 @@ $(function() {
     loadPosters();
   }
 
-  function updateSearchHistory(query) {
+  function updateSearchHistory(tosearchs) {
     // Get search history from localStorage
-    searchHistory = JSON.parse(localStorage.getItem("query")) || [];
+    searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
 
     // Check for duplicated searches
     for (var i = 0; i < searchHistory.length; i++) {
       // Check for duplicated searches
-      if (searchHistory[i]=== query) {
+      if (searchHistory[i]=== tosearchs) {
         searchHistory.splice(i, 1);
       }
     }
     // Add movie value to searchHistory array
-    searchHistory.unshift(query);
+    searchHistory.unshift(tosearchs);
   
     // Add array to localStorage
-    localStorage.setItem("query", JSON.stringify(searchHistory));
+    localStorage.setItem("tosearchs", JSON.stringify(searchHistory));
   }
   
   function loadPosters() {
@@ -153,9 +153,9 @@ $(function() {
   
     // Load movie information from search history array
     for (let i = 0; i < searchHistory.length; i++) {
-      // Replace white space with '+' character for omdb api query
-      let historyQuery = searchHistory[i].replace(/\s/g, "+");
-      addMovies(historyQuery);
+      // Replace white space with '+' character for omdb api tosearchs
+      let historytosearchs = searchHistory[i].replace(/\s/g, "+");
+      addMovies(historytosearchs);
     }
   }
   
@@ -281,9 +281,9 @@ $(function() {
   }
   
     //Search for subreddit
-    function searchSubApi(query) {
-      var subUrl = `${redditUrl}search.json?q=${query}&source=recent&type=sr&limit=${limitEl.val()}`;
-      resultTextEl.text(query);
+    function searchSubApi(tosearchs) {
+      var subUrl = `${redditUrl}search.json?q=${tosearchs}&source=recent&type=sr&limit=${limitEl.val()}`;
+      resultTextEl.text(tosearchs);
   
       fetch(subUrl)
       .then(function (response) {
@@ -310,8 +310,8 @@ $(function() {
     }
   
     // Search for reddit posts
-    function searchRedditApi(query) {
-      var postUrl = `${redditUrl}search.json?q=${query}&type=link&sort=${postSortEl.val()}&t=${postTimeEl.val()}&limit=${limitEl.val()}`;
+    function searchRedditApi(tosearchs) {
+      var postUrl = `${redditUrl}search.json?q=${tosearchs}&type=link&sort=${postSortEl.val()}&t=${postTimeEl.val()}&limit=${limitEl.val()}`;
       fetch(postUrl)
       .then(function (response) {
         if (!response.ok) {

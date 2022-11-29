@@ -56,6 +56,7 @@
                 <div class="medium-12 columns">
                   <h3>Search Result</h3>
                   <p>Result Display.</p>
+                  <div class="row" id="movie-results"></div>
 
                 </div>
               </div>
@@ -121,47 +122,51 @@
         </div>
 
         <!-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>  -->
+        
+  
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-        <script>
-          $(document).foundation();
-        </script>
         <script src="./assets/js/script.js"></script>
-       
-       <script>
+        <script src="./assets/js/omdb.js"></script>
+        <!-- <script>
+          $(document).foundation();
+        </script> -->
+        
+        <script>
 
-var tableMovieNum = 2; //A variable to keep track of how many movies in table, currently hard coded for testing
+          var tableMovieNum = 2; //A variable to keep track of how many movies in table, currently hard coded for testing
+                    
+          //JS Start -- Table expand event function
+          $('[data-open-details]').click(function (e) {
+            e.preventDefault();
+            $(this).next().toggleClass('is-active');
+            $(this).toggleClass('is-active');
+          });
+          //JS End -- Table expand event function
           
-//JS Start -- Table expand event function
-$('[data-open-details]').click(function (e) {
-  e.preventDefault();
-  $(this).next().toggleClass('is-active');
-  $(this).toggleClass('is-active');
-});
-//JS End -- Table expand event function
+          //JS Start -- Favourite change event function
+          $('[data-fav-button').click(function (e) {
+            e.preventDefault();
+            $(this).parent().parent().prev().toggleClass("favourited");
+            $(this).parent().parent().toggleClass("favourited");
+            if ($(this).parent().parent().prev().children('.text-center').text() === "⭐") {
+              $(this).parent().parent().prev().children('.text-center').text("");
+            } else {
+              $(this).parent().parent().prev().children('.text-center').text("⭐");
+            }
+          });
+          //JS End -- Favourite change event function
+          
+          //JS Start -- Favourite Toggle
+          $('[data-fav-toggle]').click(function (e) {
+            e.preventDefault();
+            $(this).toggleClass("secondary");
+            $(this).toggleClass("warning");
+            $('.favourited').toggleClass("hide")
+          })
+          //JS End -- Favourite Toggle
+                  </script>
 
-//JS Start -- Favourite change event function
-$('[data-fav-button').click(function (e) {
-  e.preventDefault();
-  $(this).parent().parent().prev().toggleClass("favourited");
-  $(this).parent().parent().toggleClass("favourited");
-  if ($(this).parent().parent().prev().children('.text-center').text() === "⭐") {
-    $(this).parent().parent().prev().children('.text-center').text("");
-  } else {
-    $(this).parent().parent().prev().children('.text-center').text("⭐");
-  }
-});
-//JS End -- Favourite change event function
 
-//JS Start -- Favourite Toggle
-$('[data-fav-toggle]').click(function (e) {
-  e.preventDefault();
-  $(this).toggleClass("secondary");
-  $(this).toggleClass("warning");
-  $('.favourited').toggleClass("hide")
-})
-//JS End -- Favourite Toggle
-        </script>
-      </body>
 
 </html>

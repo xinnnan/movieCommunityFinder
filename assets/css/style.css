@@ -242,11 +242,11 @@ ul.dropdown.menu {
   }
    /* End of stylesheet for imbeded table */
   
-   body {
+   /* body {
     background: #8a8a8a;
-   }
+   } */
 
-   li {
+   /* li {
     height: 50px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -265,7 +265,7 @@ ul.dropdown.menu {
     content: " ";
     display: block;
     clear: both;
-  }
+  } */
   
   li button {
     float: right;
