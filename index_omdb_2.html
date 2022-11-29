@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <!-- Local CSS -->
+    <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+    <title>Movie Community Finder</title>
+</head>
+
+<body>
+    <header class="d-flex flex-row justify-content-between text-white bg-primary p-2">
+        <!-- Link to Reddit/Movie details button -->
+        <button class="btn btn-primary border border-white " onclick="window.location.href = './index_omdb_1.html';"
+            type="button" id="reddit-details">Home</button>
+        <h1>Movie Community Finder</h1>
+        <!-- Invisible button for button and h1 alignment -->
+        <button style="background: transparent; border:none"></button>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container-fluid">
+        <div class="row" id="main-details-container"></div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- Day.js -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <!-- Local JS-->
+    <script src="./assets/js/omdb.js"></script>
+</body>
+
+</html>

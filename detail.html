@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Discoverer</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Orbitron:400,500" >
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:400,500,700">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+    <div class="top-bar">
+        <form autocomplete="off" id="search-form" class="top-bar-left">
+            <ul class = "menu">
+                <li><input id="search-input" type = "search" placeholder = "Search Film"></li>
+                <li><button type = "submit" class = "button">Search</button></li>
+             </ul>
+        </form>
+    </div>
+   
+    <div class="result-container">
+        <h2 id="search-title">Search results for <span id="result-text"></span></h2>
+        <ul id="search-result" class="multilevel-accordion accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
+            <!-- OMDB -->
+            <li id="omdb-container" class="accordion-item is-active" data-accordion-item>
+              <a href="#omdb-content" class="accordion-title">
+                <i class="fa-brands fa-imdb fa-2x"></i> IMDB </a>
+              <!-- OMDB content -->
+              <div id="omdb-content" class="accordion-content" data-tab-content></div>
+            </li>
+            <!-- Reddit -->
+            <li id="reddit-container" class="accordion-item" data-accordion-item>
+                <a href="#reddit-content" class="accordion-title">
+                    <i class="fa-brands fa-reddit fa-2x"></i> REDDIT </a>
+                <div id="reddit-content" class="accordion-content" data-tab-content>
+                    <!-- Slider -->
+                    <div id="limit-container" class="grid-x grid-margin-x">
+                        <div class="cell small-8 medium-9 large-10">
+                            <div class = "slider" id="limit-slider" data-slider data-initial-start = "5" data-start = "1" data-end="25">
+                                <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="slider-output"></span>
+                                <span class="slider-fill" data-slider-fill></span>
+                            </div>
+                        </div>
+                    <div class="cell small-4 medium-3 large-2">
+                        <input id="slider-output" class="post-input" type="number" >
+                    </div>
+                </div>
+                <!-- Reddit Tabs -->
+                <ul class="tabs" data-tabs id="reddit-results">
+                    <li class="tabs-title"><a href="#panel-sub">SUBREDDIT</a></li>
+                    <li class="tabs-title"><a data-tabs-target="panel-post" href="#panel-post">POST</a></li>        
+                </ul>
+                
+                <div id="tab-container">
+                    <div class="tabs-content vertical" data-tabs-content="reddit-results">
+                        <!-- Subreddit -->
+                        <div id="panel-sub" class="tabs-panel">
+                            <div id="content-container">
+                                <ul id="sub-container" class="accordion" role="tablist" data-accordion data-multi-expand="true" data-allow-all-closed="true"></ul>
+                            </div>
+                        </div>
+                        <!-- Reddit -->
+                        <div id="panel-post" class="tabs-panel">
+                            <!-- Search Filter -->
+                            <ul class="dropdown menu" data-dropdown-menu>
+                                <li>
+                                    <select id="post-sort" class="post-input">
+                                        <option value="relevance">Relevance</option>
+                                        <option value="hot">Hot</option>
+                                        <option value="top">Top</option>
+                                        <option value="new">New</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <select id="post-time" class="post-input">
+                                        <option value="all">All Time</option>
+                                        <option value="year">Year</option>
+                                        <option value="month">Month</option>
+                                        <option value="week">Week</option>
+                                        <option value="day">Day</option>
+                                    </select>
+                                </li>
+                            </ul>
+                            <!-- Reddit Post Content -->
+                            <div id="content-container">
+                                <ul id="post-container" class="multilevel-accordion accordion" role="tablist" data-accordion data-multi-expand="true" data-allow-all-closed="true"></ul>
+                            </div>
+                        </div>
+                    </div>  
+                </div>  
+            </li>
+        </ul>
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://kit.fontawesome.com/cb77ffa197.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+  <!-- <script src="./assets/js/reddit.js"></script> -->
+  <script src="./assets/js/omdb.js"></script>
+
+</body>
+</html>
