@@ -18,13 +18,7 @@ Mark/unmark movies user would like to watch
 Mark/unmark movies user have already watched
 List of interests as filter tags (keywords, generes, release date, language)
 
-Reddit:
-Title:
-About: 
-Number of subscribers
-Hot posts
-Top comments
-Growth by percentage / Growth by number of increased subscribers from user subscription date
+Reddit: user can either search for subreddits or posts relating to input movie name, and with change in filter menus and limit slider, the page will be dynamically loaded in a nested accordion form. By selecting the "subreddit" tab, user can view detials of the subreddit, and by clicking on the title, a button leading to the subreddit is presented. If "post" tab is selected, user can view the content of each post by clicking on the title block, and the comments will also be generated including number of upvotes. 
 
 User Story:
 
@@ -32,16 +26,9 @@ AS A Movie Enthuiast
 I WANT TO SEARCH THE MOVIES AND ITS RELATED COMMUNITY TOPICS
 SO THAT ALL INFORMATION IS PROVIDED AT ONCE
 
-Wireframe:
-
-Created in Axure2020 or Figma.
-https://www.figma.com/file/9gMHwboFLy9wYfaVxcteEj/Untitled?node-id=0%3A1&t=ABoK2ZOToLi7EEJc-0
-
-
 API’s used:
 OMDB
 Reddit
-
 
 Breakdown of tasks:
 
@@ -88,32 +75,5 @@ key : input  result: json
 Movie object: { returned json, fav: boolean, }
 
 Key: property boolean  result: input
-
-
-
-
-
-
-
-GET /subreddits/search
-Search subreddits by title and description.
-
-GET /subreddits/where
-→ /subreddits/popular
-→ /subreddits/new
-→ /subreddits/gold
-→ /subreddits/default
-Get all subreddits.
-The where parameter chooses the order in which the subreddits are displayed. popular sorts on the activity of the subreddit and the position of the subreddits can shift around. new sorts the subreddits based on their creation date, newest first.
-
-GET /r/subreddit/about
-Return information about the subreddit.
-Data includes the subscriber count, description, and header image.
-
-GET [/r/subreddit]/hot
-
-GET [/r/subreddit]/comments/article
-Get the comment tree for a given Link article.
-If supplied, comment is the ID36 of a comment in the comment tree for article. This comment will be the (highlighted) focal point of the returned view and context will be the number of parents shown.
 
 
