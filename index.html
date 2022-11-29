@@ -17,10 +17,51 @@
             <p class="lead">This website will help you find communities on Reddit that are similar to your movie interests. Start by adding movies you are intereested into the list. After you've added your movies, click on them in the table to reveal the generated Reddit communities!</p>
           </div>
         </div>
+        
 
         <!-- Main content area -->
         <div>
-          
+
+          <!-- Adding Form Xinnan-->
+        <div class="off-canvas-wrapper">
+          <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+            <div class="off-canvas position-left" id="search-menu" data-off-canvas data-position="left">
+              <div class="row column">
+                <br>
+                <h4>What is the movie title?</h4>
+                <p>Submit a movie title to save and search the community info.</p>
+    
+                <form id="tosearch-form" method="POST">
+                  <label>What is the movie title?
+                    <input type="text" placeholder="Name" id="tosearch-text">
+                  </label>
+                  <input type="submit" class="button expanded" value="Submit">
+                </form>
+                <p>Search Count: <span id="tosearch-count">0</span></p>
+                      <div class="row">
+                        <div class="large-12 columns">
+                          <ul id="tosearch-list" ></ul>
+                        </div>
+                      </div>
+              </div>
+            </div>
+            <div class="off-canvas-content" data-off-canvas-content>
+              <div class="title-bar">
+                <div class="title-bar-left">
+                  <button class="menu-icon" type="button" data-open="search-menu"></button>
+                  <span class="title-bar-title">Search Instructions</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
+                  <h3>Search Result</h3>
+                  <p>Result Display.</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
           <!-- User input are -->
           <div class="large-4 columns">
 
@@ -79,8 +120,15 @@
           </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> 
+        <!-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>  -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
         <script>
+          $(document).foundation();
+        </script>
+        <script src="./assets/js/script.js"></script>
+       
+       <script>
 
 var tableMovieNum = 2; //A variable to keep track of how many movies in table, currently hard coded for testing
           
