@@ -76,7 +76,7 @@ ul.dropdown.menu {
 }
 
 #content-container,
-#omdb-container{
+#omdb-content{
     max-height: 60vh;
     overflow: scroll;
 }
