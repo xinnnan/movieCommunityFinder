@@ -178,3 +178,9 @@ ul.dropdown.menu {
     margin-bottom: 3%;
     border-bottom: solid var(--grey) 1px;
 }
+
+@media only screen and (max-width: 600px) {
+  .result-container {
+    width: 100vw;
+  }
+}
