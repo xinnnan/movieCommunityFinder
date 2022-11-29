@@ -1,9 +1,7 @@
 // Search/History Elements
-const searchMovieEl = $("#tosearch-text");
-const searchBtnEl = $("#search-button");
-const clearBtnEl = $("#clear-history");
-const historyEl = $("#history");
+const searchFormEl = $("#tosearch-form");
 const msgEl = $("#msg");
+const histBtn = $("#history-btn");
 
 // Search Elements
 const resultTextEl = $("#result-text");
@@ -20,15 +18,12 @@ const redditUrl = "https://www.reddit.com/";
 // Display Results Elements
 const resultEl = $("#movie-results");
 
-// Button that links to Reddit/Movie details page
-// const redditBtnEl = $("reddit-details");
-
 // Get search history from localStorage
 // or empty array if localStorage is empty
 var searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
 
 // Base tosearchs URL and API key
-const baseURL = "http://www.omdbapi.com/?";
+const baseURL = "https://www.omdbapi.com/?";
 const apikey = "&apikey=d812fbca";
 
 $(function() {
@@ -54,20 +49,25 @@ $(function() {
         } else {
           // For first page
           // Add the movie poster to the movie results container
-          var moviePosterEl = $("<a>").addClass("thumbnail small-12 row").attr({
+          var moviePosterEl = $("<a>").addClass("thumbnail small-12 small-centered medium-5 large-2 column").attr({
             "id":"poster-link",
-             "href":"\temp folder\detail.html",
+             "href":"\detail.html",
             "data-title":data.Title});
+          localStorage.setItem("movie", JSON.stringify(data.Title));
 
-              var imageUrl = data.Poster;
-              $('body').css("background", "url(" + imageUrl + ")");
-  
+              /* your image */
             
           var movieTitle = $("<div>").addClass("card-section");
           movieTitle.html(`<h4>${data.Title}</h4>`);
           moviePosterEl.append($("<img>").attr("src", data.Poster), movieTitle);
            // Search results page append posters to parent container
-          $("#movie-results").append(moviePosterEl);
+          $("#movie-results").prepend(moviePosterEl);
+          $('body').css({
+            "background": "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(" + data.Poster + ")",
+            "background-size":"auto 100vh",
+            "background-position": "center",
+            "background-attachment": "fixed"
+          });
          
           // Generate movie details/reddit page
           genMovieDetail(data);
@@ -78,78 +78,10 @@ $(function() {
       });
   }
   
-  $("#tosearch-form").on("submit", function () {
-    // Get movie title currently in searchbar
-    // Format the title of the movie to replace white space '\s' with '+'
-    const tosearchs = searchMovieEl.val().trim().toLowerCase();
-    updateSearchHistory(tosearchs);
-  
-    // Add movie value to searchHistory array
-    // searchHistory.push(tosearchs);
-  
-    // Add array to localStorage
-    // localStorage.setItem("tosearchs", JSON.stringify(searchHistory));
-  
-    // Generate search history in HTML
-    genSeachHistory();
-  });
-  
-  // Clear history
-  clearBtnEl.on("click", function () {
-    localStorage.clear();
-    searchHistory = [];
-    // Generate empty search history in HTML
-    genSeachHistory();
-  });
-  
-  // Generate seach history in HTML when page loads
-  // Load posters from search history
-  function genSeachHistory() {
-    // Clear/reset search history
-    historyEl.html("");
-  
-    // Make seach history items
-    for (let i = 0; i < searchHistory.length; i++) {
-      // Make HTML element
-      const historyItem = $("<input>");
-  
-      // Set attributes for the element
-      historyItem.attr("type", "text");
-      historyItem.attr("readonly", true);
-      historyItem.attr("class", "form-control d-block bg-white");
-      historyItem.attr("value", searchHistory[i]);
-  
-      // Action for when search history item is clicked
-      historyItem.on("click", function () {});
-  
-      // Append history item
-      historyEl.append(historyItem);
-    }
-  
-    loadPosters();
-  }
-
-  function updateSearchHistory(tosearchs) {
-    // Get search history from localStorage
-    searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
-
-    // Check for duplicated searches
-    for (var i = 0; i < searchHistory.length; i++) {
-      // Check for duplicated searches
-      if (searchHistory[i]=== tosearchs) {
-        searchHistory.splice(i, 1);
-      }
-    }
-    // Add movie value to searchHistory array
-    searchHistory.unshift(tosearchs);
-  
-    // Add array to localStorage
-    localStorage.setItem("tosearchs", JSON.stringify(searchHistory));
-  }
-  
   function loadPosters() {
     // Clear/reset posters in movie results container
     resultEl.html("");
+    searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
   
     // Load movie information from search history array
     for (let i = 0; i < searchHistory.length; i++) {
@@ -163,14 +95,11 @@ $(function() {
   function genMovieDetail(data) {
     // Add the movie poster to the movie results container
     // Make the posters clickable
-    var moviePosterEl = $("<a>").addClass("thumbnail medium-1").attr({
-      "href":"\temp folder\detail.html",
+    var moviePosterEl = $("<a>").addClass("thumbnail").attr({
+      "href":"\detail.html",
       "data-title":data.Title});
     moviePosterEl.append($("<img>").attr("src", data.Poster));
     $("#movie-results").append(moviePosterEl);
-
-    // const moviePosterEl = $("<img>").addClass("m-1");
-    // moviePosterEl.attr("src", data.Poster);   
   
     // Make an area of the movie-item for holding the title
     const movieTitleEl = $("<p>").addClass("title");
@@ -237,7 +166,7 @@ $(function() {
       "id",
       "movie-details-container"
     );
-    movieDetailsContainerEl.addClass("d-flex flex-row justify-content-center");
+    movieDetailsContainerEl.addClass("center");
   
     // Movie details container
     const movieDetailsEl = $("<div>").attr("id", "movie-details");
@@ -245,17 +174,7 @@ $(function() {
     movieDetailsEl.addClass(
       "col-2 m-1 p-1 bg-primary border border-white text-white"
     );
-  
-    // Reddit details container
-    // const movieRedditEl = $("<div>").attr("id", "movie-reddit");
-    // movieRedditEl.addClass(
-    //   "col-2 m-1 p-1 bg-primary border border-white text-white"
-    // );
-  
-    // For demo purpose/placeholder
-    // movieRedditEl.text("Reddit");
-  
-    // Reddit/Details page append container to hold
+
     // poster/movie info/reddit info
     movieDetailsContainerEl.append(moviePosterEl, movieDetailsEl);
   
@@ -276,14 +195,13 @@ $(function() {
       movieAwardsEl,
       movieBoxOfficeEl
     );
-    localStorage.setItem("movie", JSON.stringify(data.Title));
-    $("#omdb-content").append(movieDetailsEl);
+    $("#omdb-content").empty();
+    $("#omdb-content").append(moviePosterEl,movieDetailsEl);
   }
   
     //Search for subreddit
     function searchSubApi(tosearchs) {
       var subUrl = `${redditUrl}search.json?q=${tosearchs}&source=recent&type=sr&limit=${limitEl.val()}`;
-      resultTextEl.text(tosearchs);
   
       fetch(subUrl)
       .then(function (response) {
@@ -383,8 +301,10 @@ $(function() {
       var icon = $("<img>").attr("id","sub-icon");
       iconSection.append(icon);
       var bannerUrl = subObj.banner_background_image;
-      bannerUrl = bannerUrl.substring(0, bannerUrl.indexOf('?'));
-      iconSection.css('background-image', 'url("' + bannerUrl + '")');
+      if(bannerUrl) {
+        bannerUrl = bannerUrl.substring(0, bannerUrl.indexOf('?'));
+        iconSection.css('background-image', 'url("' + bannerUrl + '")');
+      }
       if (subObj.community_icon.length) {
           icon.attr(
               "src",subObj.community_icon.substring(0, subObj.community_icon.indexOf('?')));
@@ -423,6 +343,7 @@ $(function() {
       
       // re-initialize the container 
       Foundation.reInit(subContainerEl);
+      // $(document).foundation();
     }
   
     // Display search result for reddit post
@@ -499,6 +420,7 @@ $(function() {
       }
       postContainerEl.append(postEl);
       Foundation.reInit(postContainerEl);
+      // $(document).foundation();
     }
   
     // Display comments for reddit post
@@ -523,20 +445,19 @@ $(function() {
   
     // Handle search event and trigger searches on APIs
     function handleSearchFormSubmit() {
-      
-      var searchName = JSON.parse(localStorage.getItem("movie"));
- 
-      if (!searchName) {
-        console.error("You need a search input value!");
-        return;
+      if ( document.URL.includes("detail.html") ) {
+        var searchName = JSON.parse(localStorage.getItem("movie"));
+        addMovies(searchName);
+        resultTextEl.text(searchName);
+        searchSubApi(searchName);
+        searchRedditApi(searchName); 
+      } else {
+        loadPosters();
       }
-      searchSubApi(searchName);
-      searchRedditApi(searchName); 
-      addMovies(searchName); 
     }
   
     // Update available search menu filters
-    function updatePostMenu(event) {
+    function updatePostMenu() {
       // hide menu for tiem when "hot" or "new" is selected
       // they are independent to time 
       if ($("#post-sort").val() === "hot" || $("#post-sort").val() === "new") {
@@ -544,7 +465,14 @@ $(function() {
       } else {
           postTimeEl.show();
       }
-      handleSearchFormSubmit(event);
+      handleSearchFormSubmit();
+    }
+
+    // Update searchterm when user search on the detial page
+    function updateSearchTerm() {
+      var searchName = JSON.parse(localStorage.getItem("tosearchs"))[0];
+      localStorage.setItem("movie", JSON.stringify(searchName));
+      handleSearchFormSubmit();
     }
   
     // Handle expand event for comment search
@@ -554,30 +482,18 @@ $(function() {
       searchCommentApi(subPrx, postID, this);  
     }
   
-    // Automatically update search results when any of the input values changed
-    $(document).on('click', '#poster-link', function(event) {
+    // Get the name of the poster selected
+    $(document).on('click', '#poster-link', function() {
       localStorage.setItem("movie", JSON.stringify(this.dataset.title));
-      handleSearchFormSubmi();
+      handleSearchFormSubmit();
    });
 
-    // $("#poster-link").on("click", handleSearchFormSubmit);
+    // Automatically update search results when any of the input values changes
     $(".post-input").on("change", updatePostMenu);
     $(".slider").on("click", handleSearchFormSubmit);
     $(".slider").on("click", handleSearchFormSubmit);
-    $("#search-form").on("submit", function(){
-      localStorage.setItem("movie", JSON.stringify($("#search-input").val().trim()))});
-  
-  // Loads history items
-  genSeachHistory();
-
-  // $(window).on('beforeunload', function(){
-  // });
-
-  $(window).on('load', function(){
-    var searchName = JSON.parse(localStorage.getItem("movie"));
-    searchSubApi(searchName);
-    searchRedditApi(searchName); 
-    addMovies(searchName);
-  });
-  
+    searchFormEl.on("submit", updateSearchTerm);
+    histBtn.on("click", handleSearchFormSubmit);
+    $(document).on('click', "#history-btn", handleSearchFormSubmit);
+    $(window).on("load", handleSearchFormSubmit)
 })

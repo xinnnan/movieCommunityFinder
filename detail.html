@@ -15,14 +15,59 @@
 </head>
 
 <body>
-    <div class="top-bar">
-        <form autocomplete="off" id="search-form" class="top-bar-left">
-            <ul class = "menu">
-                <li><input id="search-input" type = "search" placeholder = "Search Film"></li>
-                <li><button type = "submit" class = "button">Search</button></li>
-             </ul>
-        </form>
-    </div>
+    <header class="callout">
+        <div id = "header-block">   
+            <a href = "index.html"><h1 class="text-left">Movie Community Finder</h1></a>
+            <button class="menu-icon" type="button" data-open="search-menu"></button>
+        
+        </div>
+    </header>
+      
+
+      <!-- Main content area -->
+      <div>
+
+        <!-- Adding Form Xinnan-->
+      <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+          <div class="off-canvas position-left" id="search-menu" data-off-canvas data-position="left">
+            <div class="row column">
+              <br>
+              <h4>What is the movie title?</h4>
+              <p>Submit a movie title to save and search the community info.</p>
+  
+              <form id="tosearch-form" method="POST">
+                <label>What is the movie title?
+                  <input type="text" placeholder="Name" id="tosearch-text">
+                </label>
+                <input type="submit" class="button expanded" value="Submit">
+              </form>
+              <p>Search Count: <span id="tosearch-count">0</span></p>
+                    <div class="row">
+                      <div class="large-12 columns">
+                        <ul id="tosearch-list" ></ul>
+                      </div>
+                    </div>
+            </div>
+          </div>
+          <!-- <div class="off-canvas-content" data-off-canvas-content>
+            <div class="title-bar">
+              <div class="title-bar-left">
+                <button class="menu-icon" type="button" data-open="search-menu"></button>
+                <span class="title-bar-title">Search Instructions</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="medium-12 columns">
+                <h3>Search Result</h3>
+                <p>Result Display.</p>
+                <div class="row" id="movie-results"></div>
+
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
    
     <div class="result-container">
         <h2 id="search-title">Search results for <span id="result-text"></span></h2>
@@ -101,7 +146,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://kit.fontawesome.com/cb77ffa197.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>
-  <!-- <script src="./assets/js/reddit.js"></script> -->
+  <script src="./assets/js/script.js"></script>
   <script src="./assets/js/omdb.js"></script>
 
 </body>

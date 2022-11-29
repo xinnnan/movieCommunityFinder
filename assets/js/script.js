@@ -20,6 +20,7 @@ function rendertosearchs() {
     li.setAttribute("data-index", i);
 
     var button = document.createElement("button");
+    button.id = "history-btn";
     button.textContent = "❌";
 
     li.appendChild(button);
@@ -48,14 +49,20 @@ function storetosearchs() {
 tosearchForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
-  var tosearchText = tosearchInput.value.trim();
+  var tosearchText = tosearchInput.value.trim().toLowerCase();
 
   if (tosearchText === "") {
     return;
   }
 
+  // Prevent duplicates
+  for (i = 0; i <tosearchs.length; i++) {
+    if (tosearchs[i] == tosearchText){
+      tosearchs.splice(i, 1);
+    }
+  }
   // Add new tosearchText to tosearchs array, clear the input
-  tosearchs.push(tosearchText);
+  tosearchs.unshift(tosearchText);
   tosearchInput.value = "";
 
   // Store updated tosearchs in localStorage, re-render the list
