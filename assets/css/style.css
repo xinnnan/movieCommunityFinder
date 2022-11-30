@@ -28,7 +28,7 @@
 body {
     background-size: auto 100vh;
     background-position: center;
-    background-color: var(--grey);
+    background-image: linear-gradient(#306666,  #efd5c8);
     background-attachment: fixed;
     font-family: 'Lato', sans-serif;
 }
@@ -352,3 +352,14 @@ ul.dropdown.menu {
   }
 } 
   
+@keyframes color-change {
+  0% {
+      filter: hue-rotate(0deg);
+  }
+  50% {
+      filter: hue-rotate(180deg);
+  }
+  100% {
+      filter: hue-rotate(360deg);
+  }
+}

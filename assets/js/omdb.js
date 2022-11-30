@@ -23,7 +23,7 @@ var searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
 
 // Base tosearchs URL and API key
 const baseURL = "https://www.omdbapi.com/?";
-const apikey = "&apikey=1d5710ed";
+const apikey = "&apikey=f05a1fc8";
 
 $(function() {
 
@@ -41,7 +41,7 @@ $(function() {
         return response.json();
       })
       .then(function (data) {
-        if (!data.length) {
+        if (!data) {
           console.log("No results found!");
         } else {
           // For first page
