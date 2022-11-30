@@ -351,15 +351,3 @@ ul.dropdown.menu {
     width: 100vw;
   }
 } 
-  
-@keyframes color-change {
-  0% {
-      filter: hue-rotate(0deg);
-  }
-  50% {
-      filter: hue-rotate(180deg);
-  }
-  100% {
-      filter: hue-rotate(360deg);
-  }
-}
