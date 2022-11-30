@@ -1,6 +1,5 @@
 // Search/History Elements
 const searchFormEl = $("#tosearch-form");
-const msgEl = $("#msg");
 const histBtn = $("#history-btn");
 
 // Search Elements
@@ -24,7 +23,7 @@ var searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
 
 // Base tosearchs URL and API key
 const baseURL = "https://www.omdbapi.com/?";
-const apikey = "&apikey=d812fbca";
+const apikey = "&apikey=1d5710ed";
 
 $(function() {
 
@@ -42,14 +41,12 @@ $(function() {
         return response.json();
       })
       .then(function (data) {
-
-        if (data.Error) {
+        if (!data.length) {
           console.log("No results found!");
-          msgEl.show().text(`No results found, search again!`).fadeOut(3000);
         } else {
           // For first page
           // Add the movie poster to the movie results container
-          var moviePosterEl = $("<a>").addClass("thumbnail centered small-12 medium-5 large-2 row").attr({
+          var moviePosterEl = $("<a>").addClass("thumbnail small-12 medium-5 large-2 row").attr({
             "id":"poster-link",
              "href":"\detail.html",
             "data-title":data.Title});
@@ -63,7 +60,7 @@ $(function() {
            // Search results page append posters to parent container
           $("#movie-results").prepend(moviePosterEl);
           $('body').css({
-            "background": "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(" + data.Poster + ")",
+            "background": "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url(" + data.Poster + ")",
             "background-size":"auto 100vh",
             "background-position": "center",
             "background-attachment": "fixed"
@@ -196,12 +193,15 @@ $(function() {
       movieBoxOfficeEl
     );
     $("#omdb-content").empty();
-    $("#omdb-content").append(moviePosterEl,movieDetailsEl);
+    $("#poster-container").empty();
+    $("#omdb-content").append(movieDetailsEl);
+    $("#poster-container").append(moviePosterEl);
   }
   
     //Search for subreddit
     function searchSubApi(tosearchs) {
-      var subUrl = `${redditUrl}search.json?q=${tosearchs}&source=recent&type=sr&limit=${limitEl.val()}`;
+      var searchKey= tosearchs.replace(/\s/g, "+");
+      var subUrl = `${redditUrl}search.json?q=${searchKey}&source=recent&type=sr&limit=${limitEl.val()}`;
   
       fetch(subUrl)
       .then(function (response) {
@@ -229,7 +229,8 @@ $(function() {
   
     // Search for reddit posts
     function searchRedditApi(tosearchs) {
-      var postUrl = `${redditUrl}search.json?q=${tosearchs}&type=link&sort=${postSortEl.val()}&t=${postTimeEl.val()}&limit=${limitEl.val()}`;
+      var searchKey= tosearchs.replace(/\s/g, "+");
+      var postUrl = `${redditUrl}search.json?q=${searchKey}&type=link&sort=${postSortEl.val()}&t=${postTimeEl.val()}&limit=${limitEl.val()}`;
       fetch(postUrl)
       .then(function (response) {
         if (!response.ok) {
@@ -305,7 +306,7 @@ $(function() {
         bannerUrl = bannerUrl.substring(0, bannerUrl.indexOf('?'));
         iconSection.css('background-image', 'url("' + bannerUrl + '")');
       }
-      if (subObj.community_icon.length) {
+      if (subObj.community_icon) {
           icon.attr(
               "src",subObj.community_icon.substring(0, subObj.community_icon.indexOf('?')));
       } else {
@@ -343,7 +344,6 @@ $(function() {
       
       // re-initialize the container 
       Foundation.reInit(subContainerEl);
-      // $(document).foundation();
     }
   
     // Display search result for reddit post
@@ -420,7 +420,6 @@ $(function() {
       }
       postContainerEl.append(postEl);
       Foundation.reInit(postContainerEl);
-      // $(document).foundation();
     }
   
     // Display comments for reddit post

@@ -16,7 +16,7 @@ function rendertosearchs() {
     var tosearch = tosearchs[i];
 
     var li = document.createElement("li");
-    li.textContent = tosearch;
+    li.textContent = tosearch.toUpperCase();
     li.setAttribute("data-index", i);
 
     var button = document.createElement("button");

@@ -26,10 +26,9 @@
 
 
 body {
-    background: rgba(0,0,0,0.6);
     background-size: auto 100vh;
     background-position: center;
-    background-color: black;
+    background-color: var(--grey);
     background-attachment: fixed;
     font-family: 'Lato', sans-serif;
 }
@@ -37,11 +36,14 @@ body {
 a h1 {
   font-size: 17px;
   font-family: 'Orbitron', sans-serif;
-  color: var(--yellow)
+  color: var(--yellow);
 }
 
 h3 {
   color: var(--light);
+  font-weight:200;
+  font-size: 15px;
+  letter-spacing: 0.3em;
 }
 
 h4 {
@@ -55,15 +57,39 @@ ul.dropdown.menu {
 
 .callout {
   min-height:25px;
-  background: black;
-  color: var(--yellow);
+  background: none;
+  margin-bottom: 0;
+  border: none;
+  color: white;
   text-align: center; 
+  letter-spacing: 0.2em;
+}
+
+.title-bar{
+  background: rgba(0,0,0,0.5);
+  border-left: solid 5px var(--yellow);
+}
+
+.title-bar-title{
+  color: var(--yellow);
+  letter-spacing: 0.2em;
+  font-family: 'Orbitron', sans-serif;
+  font-weight:lighter;
+}
+
+#search-menu {
+  background: rgba(0,0,0,0.9);
+  color: white;
+}
+
+.off-canvas-content {
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 .result-container {
-    width: 60vw;
-    padding: 2%;
-    margin-left: auto;   
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .accordion-title {
@@ -75,9 +101,19 @@ ul.dropdown.menu {
     background: var(--yellow);
 }
 
+#poster-container{
+  margin-right: 5%;
+}
+
 #poster-link,
 .slider-handle:hover {
     background: #fff; 
+}
+
+#poster-link > img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .slider-handle:active {
@@ -132,13 +168,24 @@ ul.dropdown.menu {
   background-color: rgb(148, 196, 196);
 }
 
-#movie-results > a {
+#movie-results,
+#result-wrapper{
+  justify-content: center;
+}
+
+#movie-results a{
   margin: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#movie-results a:hover{
+  box-shadow: 0 0 10px #fff, 0 0 20px var(--yellow);
 }
 
 #content-container,
 #omdb-content{
-    max-height: 60vh;
+    max-height: 55vh;
     overflow: scroll;
 }
 
@@ -149,6 +196,7 @@ ul.dropdown.menu {
 }
 
 #search-result {
+    width: 60%;
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 0 5px #fff, 0 0 10px var(--yellow);
@@ -199,7 +247,6 @@ ul.dropdown.menu {
     margin-right: 5%;
 }
 
-
 #icon-section {
     background-size: 100%;
     background-color: var(--grey);
@@ -240,10 +287,11 @@ ul.dropdown.menu {
     border-bottom: solid var(--grey) 1px;
 }
 
-#header-block {
-  margin-left: 2%;
+#header-block,
+#search-menu h4,
+#search-menu label{
   color: var(--yellow);
-}
+} 
 
 #tosearch-list {
   width: 100%;
@@ -257,24 +305,27 @@ ul.dropdown.menu {
   list-style: none;
 }
 
-#tosearch-list li:hover{
-  background-color: white
+#tosearch-form>input{
+  background-color: var(--yellow);
+  color: black;
 }
 
 #tosearch-list li button{
-  background-color: white;
+  background-color: black;
   text-align: center;
   color: var(--yellow);
-  border: none;
   line-height: 40px;
   min-width: 40px;
   cursor: pointer;
   font-size: 1em;
+  border-radius: 5px;
 }
 
-#tosearch-list li button:hover{
+#tosearch-list li button:hover,
+#tosearch-form>input:hover{
   color:white ;
   background-color: var(--yellow);
+  text-shadow: 0 0 5px #fff, 0 0 10px var(--yellow);
 }
 
 @-webkit-keyframes fadeIn {
@@ -296,7 +347,7 @@ ul.dropdown.menu {
 }
 
 @media only screen and (max-width: 600px) {
-  .result-container {
+  #search-result {
     width: 100vw;
   }
 } 
