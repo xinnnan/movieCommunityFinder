@@ -38,12 +38,13 @@ $(function() {
         return response.json();
       })
       .then(await function (data) {
-        if (data.Error) {
+        if (data.Error || data.Poster ==="N/A") {
           // Remove it from search history
           searchHistory.pop();
           localStorage.setItem("tosearchs", JSON.stringify(searchHistory));
+          window.location.reload();
           console.log("No results found!");
-          if(!alert('No results found! Try a different name.')){window.location.reload();}
+          alert("No results found");
         } else {
           localStorage.setItem("movie", JSON.stringify(data.Title));
           // Generate movie poster
@@ -58,8 +59,6 @@ $(function() {
   }
   
 async function loadPosters() {
-    
-
     searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
 
     // Clear/reset posters in movie results container
@@ -583,5 +582,5 @@ async function loadPosters() {
   // Handle click event for items from search history 
   $(document).on("click", "#history-btn", handleSearchFormSubmit);
 
-  handleSearchFormSubmit();
+  handleSearchFormSubmit(event);
 })
