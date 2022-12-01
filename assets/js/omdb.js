@@ -39,10 +39,11 @@ $(function() {
       })
       .then(await function (data) {
         if (data.Error) {
+          // Remove it from search history
           searchHistory.pop();
           localStorage.setItem("tosearchs", JSON.stringify(searchHistory));
           console.log("No results found!");
-          
+          if(!alert('No results found! Try a different name.')){window.location.reload();}
         } else {
           localStorage.setItem("movie", JSON.stringify(data.Title));
           // Generate movie poster
@@ -57,8 +58,11 @@ $(function() {
   }
   
 async function loadPosters() {
-    // Clear/reset posters in movie results container
+    
+
     searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
+
+    // Clear/reset posters in movie results container
     if (!searchHistory.length) {
       resultEl.html(
         '<img src="https://freesvg.org/img/1553605647.png" class="filter-white"></img>').css({
