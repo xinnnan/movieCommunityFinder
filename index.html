@@ -17,7 +17,6 @@
         <header class="callout">
             <div id = "header-block">   
                 <a href = "index.html"><h1 class="text-venter">Movie Community Finder</h1></a>
-                <button class="menu-icon" type="button" data-close="search-menu"></button>
             </div>
         </header>
         
@@ -53,117 +52,42 @@
                 <div class="title-bar-left">
                   <button class="menu-icon" type="button" data-open="search-menu"></button>
                   <span class="title-bar-title">Search Instructions</span>
+                  <button class="clear button" type="button" data-open="fav-panel" id="fav-trigger">
+                    <i class="fa-solid fa-star fa-lg"></i>
+                    <div class="tooltip">Favourite</div>
+                  </button>
                 </div>
               </div>
               <div class="row">
                 <div class="medium-12 columns">
-                  <h3>Search Result</h3>
                   <div class="row grid-x grid-margin-x" id="movie-results"></div>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
-           <!-- User input are -->
-           <div class="large-4 columns">
 
-          </div>
+              <!-- Favourite panel -->
+      <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+          
+          <div class="off-canvas position-right" id="fav-panel" data-off-canvas data-position="right" data-off-canvas data-transition="push">
+            <div class="row grid-x grid-margin-x">
 
-          <!-- Table area, takes (8/12) on large screen, (12/12) on any smaller -->
-          <div class="large-8 columns">
-            
-            <!-- Switch for toggling favourites -->
-            <div class="switch small">
-              <button type="button" class="secondary large button" data-fav-toggle>Click to toggle favourites</button>
             </div>
-            
-            <!-- Table head -->
-            <table class="table-expand">
-              <thead>
-                <tr class="table-expand-row-">
-                  <th width="100">Favourited</th>
-                  <th>Movie Title</th>
-                  <th class="text-left" width="150">Option 3</th>
-                  <th width="150">Option 4</th>
-                </tr>
-              </thead>
-
-              <!-- Table body -->
-              <tbody>
-                <tr class="table-expand-row" data-open-details>
-                  <td class="text-center"></td>
-                  <td>MOVIE 1</td>
-                  <td class="text-right"></td>
-                  <td><span class="expand-icon"></span></td>
-                </tr>
-            
-                <tr class="table-expand-row-content">
-                  <td colspan="8" class="table-expand-row-nested">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque unde quaerat reprehenderit ipsa ipsam, adipisci facere repellendus impedit at, quisquam dicta optio veniam quia nesciunt, inventore quod in neque magni?</p>
-                    <input type="submit" class="button float-right" value="Favourite" data-fav-button>
-                  </td>
-                </tr>
-            
-                <tr class="table-expand-row" data-open-details>
-                  <td class="text-center"></td>
-                  <td>MOVIE 2</td>
-                  <td class="text-right"></td>
-                  <td><span class="expand-icon"></span></td>
-                </tr>
-            
-                <tr class="table-expand-row-content">
-                  <td colspan="8" class="table-expand-row-nested">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque unde quaerat reprehenderit ipsa ipsam, adipisci facere repellendus impedit at, quisquam dicta optio veniam quia nesciunt, inventore quod in neque magni?</p>
-                    <input type="submit" class="button float-right" value="Favourite" data-fav-button>
-                  </td>
-                  </td>
-                </tr>
-
+          </div>
+        </div>
+      </div>
           </div>
         </div>
  
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://kit.fontawesome.com/cb77ffa197.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js" crossorigin="anonymous"></script>
         <script src="./assets/js/script.js"></script>
         <script src="./assets/js/omdb.js"></script>
         <script>
           $(document).foundation();
         </script>
-        
-        <script>
-
-          var tableMovieNum = 2; //A variable to keep track of how many movies in table, currently hard coded for testing
-                    
-          //JS Start -- Table expand event function
-          $('[data-open-details]').click(function (e) {
-            e.preventDefault();
-            $(this).next().toggleClass('is-active');
-            $(this).toggleClass('is-active');
-          });
-          //JS End -- Table expand event function
-          
-          //JS Start -- Favourite change event function
-          $('[data-fav-button').click(function (e) {
-            e.preventDefault();
-            $(this).parent().parent().prev().toggleClass("favourited");
-            $(this).parent().parent().toggleClass("favourited");
-            if ($(this).parent().parent().prev().children('.text-center').text() === "⭐") {
-              $(this).parent().parent().prev().children('.text-center').text("");
-            } else {
-              $(this).parent().parent().prev().children('.text-center').text("⭐");
-            }
-          });
-          //JS End -- Favourite change event function
-          
-          //JS Start -- Favourite Toggle
-          $('[data-fav-toggle]').click(function (e) {
-            e.preventDefault();
-            $(this).toggleClass("secondary");
-            $(this).toggleClass("warning");
-            $('.favourited').toggleClass("hide")
-          })
-          //JS End -- Favourite Toggle
-      </script>
   </body>
 </html>

@@ -5,7 +5,6 @@ var tosearchCountSpan = document.querySelector("#tosearch-count");
 
 var tosearchs = [];
 
-
 function rendertosearchs() {
 
   tosearchList.innerHTML = "";
@@ -28,7 +27,6 @@ function rendertosearchs() {
   }
 }
 
-
 function init() {
   // Get stored tosearchs from localStorage
   var storedtosearchs = JSON.parse(localStorage.getItem("tosearchs"));
@@ -39,6 +37,7 @@ function init() {
   }
 
   rendertosearchs();
+  // renderFavourites();
 }
 
 function storetosearchs() {
@@ -62,7 +61,7 @@ tosearchForm.addEventListener("submit", function(event) {
     }
   }
   // Add new tosearchText to tosearchs array, clear the input
-  tosearchs.unshift(tosearchText);
+  tosearchs.push(tosearchText);
   tosearchInput.value = "";
 
   // Store updated tosearchs in localStorage, re-render the list
@@ -87,4 +86,4 @@ tosearchList.addEventListener("click", function(event) {
 });
 
 // Calls init to retrieve data and render it to the page on load
-init()
+init();

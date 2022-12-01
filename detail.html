@@ -18,7 +18,6 @@
     <header class="callout">
         <div id = "header-block">   
             <a href = "index.html"><h1 class="text-center">Movie Community Finder</h1></a>
-            <button class="menu-icon" type="button" data-open="search-menu"></button>
         </div>
     </header>
       
@@ -51,10 +50,32 @@
           </div>
         </div>
       </div>
+
+      <!-- Favourite panel -->
+      <div class="off-canvas-wrapper">
+        <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+          <div class="off-canvas position-right" id="fav-panel" data-off-canvas data-position="right">
+            <div class="row grid-x grid-margin-x">
+
+            </div>
+          </div>
+        </div>
+      </div>
    
     <div class="result-container">
-        <h2 id="search-title">Search results for <span id="result-text"></span></h2>
-          <div class = "row grid-x grid-margin-x" id="result-wrapper">
+        <div class="title-bar">
+            <div class="title-bar-left">
+                <button class="menu-icon" type="button" data-open="search-menu"></button>
+                <span class="title-bar-title">Search results for 
+                    <span id="result-text"></span>
+                </span>
+                <button class="clear button" type="button" data-open="fav-panel" id="fav-trigger">
+                    <div class="tooltip">Favourite</div>
+                    <i class="fa-solid fa-star fa-lg"></i>
+                </button>
+            </div>
+        </div>
+        <div class = "row grid-x grid-margin-x" id="result-wrapper">
             <div id="poster-container"></div>
             <ul id="search-result" class="multilevel-accordion accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
             <!-- OMDB -->

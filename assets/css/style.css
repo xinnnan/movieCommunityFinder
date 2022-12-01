@@ -34,25 +34,32 @@ body {
 }
 
 a h1 {
-  font-size: 17px;
+  font-size: 20px;
   font-family: 'Orbitron', sans-serif;
-  color: var(--yellow);
-}
-
-h3 {
   color: var(--light);
-  font-weight:200;
-  font-size: 15px;
   letter-spacing: 0.3em;
+  text-shadow: 0 0 10px #fff, 0 0 20px var(--yellow);
 }
 
-h4 {
+h4,
+#comment {
   color: #444444;
   font-size: 15px;
+  margin: 5px;
+}
+
+p {
+  color: var(--darkgrey);
+  font-size: 13px;
+  margin: 5px;
 }
 
 ul.dropdown.menu {
     margin-bottom: 10px;
+}
+
+.filter-white {
+  filter: brightness(0) invert(1);
 }
 
 .callout {
@@ -66,8 +73,9 @@ ul.dropdown.menu {
 }
 
 .title-bar{
-  background: rgba(0,0,0,0.5);
-  border-left: solid 5px var(--yellow);
+  background: none;
+  border-left: solid 6px var(--yellow);
+  margin-bottom: 20px;
 }
 
 .title-bar-title{
@@ -77,19 +85,10 @@ ul.dropdown.menu {
   font-weight:lighter;
 }
 
-#search-menu {
-  background: rgba(0,0,0,0.9);
-  color: white;
-}
-
-.off-canvas-content {
+.off-canvas-content,
+.result-container {
   margin-left: 15%;
   margin-right: 15%;
-}
-
-.result-container {
-    padding-left: 10%;
-    padding-right: 10%;
 }
 
 .accordion-title {
@@ -99,21 +98,6 @@ ul.dropdown.menu {
 .slider-fill, 
 .slider-handle {
     background: var(--yellow);
-}
-
-#poster-container{
-  margin-right: 5%;
-}
-
-#poster-link,
-.slider-handle:hover {
-    background: #fff; 
-}
-
-#poster-link > img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .slider-handle:active {
@@ -168,19 +152,100 @@ ul.dropdown.menu {
   background-color: rgb(148, 196, 196);
 }
 
-#movie-results,
-#result-wrapper{
+.slider-handle:hover {
+  background: #fff; 
+}
+
+#search-menu,
+#fav-panel {
+  background-image: linear-gradient(#306666,  #efd5c8);
+  color: white;
+  padding: 20px;
+}
+
+#search-menu > div > p {
+  color: white;
+}
+
+#poster-card {
+    background: #fff; 
+    margin: 15px;
+    position:relative;
+    border-radius: 10px;
+    border-style: none;
+    overflow: hidden;
+}
+
+#poster-card:hover{
+  box-shadow: 0 0 10px #fff, 0 0 20px var(--yellow);
+}
+
+#fav-trigger {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0;
+  color: white;
+}
+
+#fav-trigger > .fa-star:hover {
+  text-shadow: 0 0 10px #fff, 0 0 20px var(--yellow);
+  animation: spin 3s linear infinite;
+}
+
+#fav-trigger .tooltip {
+  position: absolute;
+  line-height: 1.5;
+  font-family:'Lato', sans-serif;
+  font-size: 12px;
+  background-color: #306666;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#fav-trigger:hover .tooltip {
+  right: -80px;
+  top: -5px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0.4s;
+}
+
+#poster-card #fav-btn {
+  position: absolute;
+  float: none;
+  bottom:0;
+  right:0;
+  margin: 0;
+  color: #306666;
+}
+
+#poster-card #fav-btn:hover {
+  animation: spin 3s linear infinite;
+}
+
+
+#poster-link {
+  display: block;
+  text-align: center;
+}
+
+#movie-results{
   justify-content: center;
+}
+
+#result-wrapper{
+  justify-content: space-around;
 }
 
 #movie-results a{
   margin: 10px;
   border-radius: 5px;
   overflow: hidden;
-}
-
-#movie-results a:hover{
-  box-shadow: 0 0 10px #fff, 0 0 20px var(--yellow);
 }
 
 #content-container,
@@ -259,6 +324,7 @@ ul.dropdown.menu {
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 5px;
     font-size: 100%;
+    border-left: solid 5px var(--yellow);
     margin-bottom: 3%;
 }
 
@@ -271,18 +337,13 @@ ul.dropdown.menu {
 
 #comment-wrapper{
     color: var(--darkgrey);
-    font-size: 70%;
+    font-size: 12px;
     list-style-type: none;
-}
-
-#post-text {
-    color: #444444;
-    font-size: 90%;
 }
 
 #comment-wrapper #comment {
     color: #444444;
-    font-size: 15px;
+    font-size: 13px;
     margin-bottom: 3%;
     border-bottom: solid var(--grey) 1px;
 }
@@ -306,16 +367,18 @@ ul.dropdown.menu {
 }
 
 #tosearch-form>input{
-  background-color: var(--yellow);
-  color: black;
+  background-color: #306666; 
+  color: #efd5c8;
+  letter-spacing: 0.3em;
 }
 
 #tosearch-list li button{
-  background-color: black;
+  background-color: #306666;
   text-align: center;
-  color: var(--yellow);
-  line-height: 40px;
-  min-width: 40px;
+  color: #efd5c8;
+  line-height: 30px;
+  min-width: 30px;
+  margin-left: 10px;
   cursor: pointer;
   font-size: 1em;
   border-radius: 5px;
@@ -346,7 +409,13 @@ ul.dropdown.menu {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 864px) {
   #search-result {
     width: 100vw;
   }
