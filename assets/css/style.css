@@ -58,11 +58,6 @@ ul.dropdown.menu {
     margin-bottom: 10px;
 }
 
-.filter-white {
-  filter: brightness(0) invert(1);
-  scale: 0.5;
-}
-
 .callout {
   min-height:25px;
   background: none;
@@ -155,6 +150,12 @@ ul.dropdown.menu {
 
 .slider-handle:hover {
   background: #fff; 
+}
+
+
+#movie-results >.filter-white {
+  filter: brightness(0) invert(1);
+  scale: 0.5;
 }
 
 #search-menu,
