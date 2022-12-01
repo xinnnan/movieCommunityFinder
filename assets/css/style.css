@@ -60,6 +60,7 @@ ul.dropdown.menu {
 
 .filter-white {
   filter: brightness(0) invert(1);
+  scale: 0.5;
 }
 
 .callout {

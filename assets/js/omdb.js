@@ -64,8 +64,7 @@ async function loadPosters() {
     // Clear/reset posters in movie results container
     if (!searchHistory.length) {
       resultEl.html(
-        '<img src="https://freesvg.org/img/1553605647.png" class="filter-white"></img>').css({
-          "transform": "scale(0.5)"});
+        '<img src="https://freesvg.org/img/1553605647.png" class="filter-white"></img>');
     } else {
       resultEl.html("");
     }
