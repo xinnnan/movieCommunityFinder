@@ -37,10 +37,10 @@ The following image shows the web application's appearance and functionality:
 ![Click on the poster to enter the page with movie details and reddit information, user can also search for movies from this page.](./assets/images/chrome-capture-2.gif)
 ![User has access to reddit posts and communities from the detailed page, and by changing the slider and inputs from drop down menu, information will be dynamically generated.](./assets/images/chrome-capture-3.gif)
 ![User also has access to videos and reddit comments from this page.](./assets/images/chrome-capture-4.gif)
-![By click on either the star button on the navigation bar or on the poster, user can mark or unmark the movie.](./assets/images/chrome-capture-5.gif)
-![User can directly go to other favourited movie's detail page by click on the poster stored in favourite panel.]<img src="/assets/images/chrome-capture-6.gif" width="720" height="353"/>
+<img src="/assets/images/chrome-capture-5.gif" width="720" height="353"/>
+![User can directly go to other favourited movie's detail page by click on the poster stored in favourite panel.](./assets/images/chrome-capture-6.gif)
 ![All informations are shared between pages, and user is also able to mark/unmark movie from the main page.](./assets/images/chrome-capture-7.gif)
-![Movie poster is removed from the main page if user delete it's related search keyword.](./assets/images/chrome-capture-8.gif)
+<img src="/assets/images/chrome-capture-8.gif" width="720" height="353"/>
 
 ## Link
 
