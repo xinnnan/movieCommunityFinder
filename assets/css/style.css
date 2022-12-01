@@ -214,7 +214,7 @@ ul.dropdown.menu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transition-delay: 0.4s;
+  transition-delay: 0.2s;
 }
 
 #poster-card #fav-btn {
