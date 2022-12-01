@@ -23,7 +23,7 @@ function rendertosearchs() {
     button.textContent = "❌";
 
     li.appendChild(button);
-    tosearchList.appendChild(li);
+    tosearchList.prepend(li);
   }
 }
 
@@ -37,7 +37,6 @@ function init() {
   }
 
   rendertosearchs();
-  // renderFavourites();
 }
 
 function storetosearchs() {

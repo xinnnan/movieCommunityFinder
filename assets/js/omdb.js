@@ -39,7 +39,8 @@ $(function() {
       })
       .then(await function (data) {
         if (data.Error) {
-          // localStorage.setItem("tosearchs", JSON.stringify(searchHistory.slice(1)));
+          searchHistory.pop();
+          localStorage.setItem("tosearchs", JSON.stringify(searchHistory));
           console.log("No results found!");
           
         } else {
@@ -59,7 +60,9 @@ async function loadPosters() {
     // Clear/reset posters in movie results container
     searchHistory = JSON.parse(localStorage.getItem("tosearchs")) || [];
     if (!searchHistory.length) {
-      resultEl.html('<img src="https://freesvg.org/img/1553605647.png" class="filter-white"></img>');
+      resultEl.html(
+        '<img src="https://freesvg.org/img/1553605647.png" class="filter-white"></img>').css({
+          "transform": "scale(0.5)"});
     } else {
       resultEl.html("");
     }
@@ -505,7 +508,7 @@ async function loadPosters() {
 
   // Update searchterm when user search on the detial page
   function updateSearchTerm() {
-    var searchName = JSON.parse(localStorage.getItem("tosearchs"))[0];
+    var searchName = JSON.parse(localStorage.getItem("tosearchs")).slice(-1)[0];
     localStorage.setItem("movie", JSON.stringify(searchName));
     handleSearchFormSubmit();
   }
